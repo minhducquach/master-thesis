@@ -1,0 +1,55 @@
+{
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk ➞ copyPDF",
+      "tools": ["latexmk", "copyPDF"]
+    },
+    {
+        "name": "lualatexmk ➞ copyPDF",
+        "tools": ["lualatexmk", "copyPDF"]
+    }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-cd",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdflatex=lualatex",
+                "-cd",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "copyPDF",
+            "command": "cp",
+            "args": [ 
+                "%OUTDIR%/%DOCFILE%.pdf",
+                "%DIR%/%DOCFILE%.pdf"
+            ],
+            "env": {}
+        }
+    ]
+}
